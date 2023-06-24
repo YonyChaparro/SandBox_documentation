@@ -12,5 +12,8 @@ export default {
  *      content: Mensaje de ejemplo
  *      Text/plain: 
  *      type:String 
+ *      content:   
+ *      text/plain:
+ *      example: "Bienvenidos a typescript"
 */
 }

@@ -1,7 +1,7 @@
+import App from './Router'
 
-import App from "./Router"
 
-const program = new App()
+//Crear un objeto de la clase App
+
+const program=new App()
 program.start()
-
-
