@@ -1,7 +1,7 @@
 //Importar las bibliotecas
 
 import  request  from "supertest";
-import  App  from "/Users/yonis/Desktop/BACKEND/SandBox-Documentación/src/Router";
+import  App  from "/Users/yonis/Desktop/BACKEND/SandBox-Documentación/src/App";
 
 describe(
     'GET /',
