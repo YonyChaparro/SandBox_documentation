@@ -2,7 +2,9 @@ import swaggerUi from 'swagger-ui-express'
 import {swaggerSpec} from './swagger.conf'
 import express,{Application, Request, Response} from 'express'
 
-
+import PacienteRouter from './routers/pacienteRouter'
+import MedicoRouter from './routers/Medico.routes'
+ 
 /**
  * Clase principal de la API. Define las rutas de la API
  * 
@@ -14,6 +16,7 @@ class App{
 	//Atributos
 	public app:Application
 	private server:any
+	
 
 	/**
      * Método constructor de la clase
@@ -31,30 +34,22 @@ class App{
 		this.app.use(
 			'/api-docs',
 			swaggerUi.serve,
-			//swaggerUi.setup(swaggerSpec)
+			swaggerUi.setup(swaggerSpec)
 		)
-
 		this.routes()
 	}
 
+	/**
+	 * Definir y agregar las rutas de la API con express
+	 * */
 	private routes():void{
-        
-		this.app.get(
-			'/',
-			(req:Request, res:Response)=>{
-				res.send('Bienvenidos a la IPS AteneaIPS')
-			}
-		)
 
-		this.app.post(
-			'/paciente',
-			(req:Request, res:Response)=>{
-				res.send('Bienvenidos a typescript')
-			}
-		)
+		this.app.use('/', PacienteRouter)
+		this.app.use('/' MedicoRouter)
+		
 	}
 
-	public start():void{
+	public start():void{ 
 
 		this.server=this.app.listen(
 			3000,
