@@ -5,7 +5,7 @@ import PacienteController from "../controllers/PacienteController";
 //Enrutamiento... En la página de express podeos encontrar todo lo requerido para enrutamientos
 
 
-class pacienteRouter{
+class PacienteRouter{
     router:Router
     pacienteController:PacienteController
     
@@ -35,4 +35,5 @@ class pacienteRouter{
     }
 }
 
-export default pacienteRouter
+const miRouter=new PacienteRouter()
+export default miRouter.router

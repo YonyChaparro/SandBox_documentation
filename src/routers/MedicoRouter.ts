@@ -1,14 +1,14 @@
 import { Router, request,response } from "express";
 
-import MedioController from "../controllers/medicoController";
+import MedicoController from "../controllers/MedicoController";
 
 class MedicoRouter{
     router:Router
-    medicoController: MedioController
+    medicoController: MedicoController
 
     constructor(){
         this.router=Router()
-        this.medicoController= new this.medicoController()
+        this.medicoController= new MedicoController()
         this.routers()
     }
 
@@ -20,6 +20,8 @@ class MedicoRouter{
         }
         )
     }
+
+    
 }
 
 export default MedicoRouter

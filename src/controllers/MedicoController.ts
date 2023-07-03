@@ -2,7 +2,7 @@ import { Request, response } from "express";
 
 import { Prisma, PrismaClient } from "@prisma/client";
 
-class MedioController{
+class MedicoController{
 
     private prisma:PrismaClient
 
@@ -15,6 +15,8 @@ class MedioController{
         res.json(medicos)
     }
 
+
+
 }
 
-export default MedioController
+export default MedicoController
