@@ -1,26 +1,24 @@
-import { Router, Response, Request } from "express";
+import { Router, Request, Response } from 'express'
+import FormularioController from '../controllers/FormularioController'
 
-import FormularioController from "../controllers/FormularioController"; 
-import { request } from "http";
+class FormularioRouter {
+  router: Router
+  miFormularioController: FormularioController
 
-class FormularioRouter{
-    router=Router()
-    miFormularioController:FormularioController
+  constructor() {
+    this.router = Router()
+    this.miFormularioController = new FormularioController()
+    this.routes()
+  }
 
-    constructor(){
-        this.router==Router()
-        this.miFormularioController=new FormularioController()
-        this.routes()
-    }
-
-    private routes(){
-        this.router.get(
-            '/formulario/:formulario',
-            (req:Request, res:Response)=>{
-                this.miFormularioController.obtenerDefinicion(req,res)
-            }
-        )
-    }
+  private routes(): void {
+    this.router.get(
+      '/formulario/:formulario',
+      (req: Request, res: Response) => {
+        this.miFormularioController.obtenerDefinicion(req, res)
+      }
+    )
+  }
 }
 
 export default new FormularioRouter().router

@@ -1,27 +1,25 @@
-import { Router, request,response } from "express";
+import { Router, Request, Response } from 'express'
+import MedicoController from '../controllers/MedicoController';
 
-import MedicoController from "../controllers/MedicoController";
-
-class MedicoRouter{
-    router:Router
+class MedicoRouter {
+    router: Router
     medicoController: MedicoController
 
-    constructor(){
-        this.router=Router()
-        this.medicoController= new MedicoController()
-        this.routers()
+    constructor() {
+        this.router = Router()
+        this.medicoController = new MedicoController()
+        this.routes()
     }
 
-    private routers():void{
-
-        this.router.get('/medicos',
-        (req:Request, res:Response)=>{
-            this.medicoController.obtenerMedicos(req,res)
-        }
-        )
+    private routes():void{
+        this.router.get(
+            '/medico',
+            (req: Request, res: Response) => {
+              this.medicoController.obtenerMedicos(req, res)
+            }
+          )
     }
 
-    
 }
 
-export default MedicoRouter
+export default new MedicoRouter().router

@@ -1,39 +1,31 @@
-import { Router, Request, Response } from "express";
-import PacienteController from "../controllers/PacienteController";
+import { Router, Request, Response } from 'express'
+import PacienteController from '../controllers/PacienteController';
 
+class PacienteRouter {
+  router: Router
+  PacienteController: PacienteController
 
-//Enrutamiento... En la página de express podeos encontrar todo lo requerido para enrutamientos
+  constructor() {
+    this.router = Router()
+    this.PacienteController = new PacienteController()
+    this.routes()
+  }
 
+  private routes(): void {
+    this.router.get(
+      '/pacientes',
+      (req: Request, res: Response) => {
+        this.PacienteController.obtenerPacientes(req, res)
+      }
+    )
 
-class PacienteRouter{
-    router:Router
-    pacienteController:PacienteController
-    
-
-    constructor(){
-        this.router=Router()
-        this.pacienteController=new PacienteController()
-        this.routes()
-
-    }
-
-    private routes():void{
-        this.router.get(
-			'/pacientes', 
-            (req:Request, res:Response)=>{
-                this.pacienteController.obtenerPacientes(req,res)
-            }
-		)
-
-		this.router.post(
-			'/crear_paciente', 
-            (req:Request, res:Response)=>{
-                this.pacienteController.crearPaciente(req,res)
-            } 
-			
-		)
-    }
+    this.router.post(
+      '/crear_paciente',
+      (req: Request, res: Response) => {
+        this.PacienteController.crearPaciente(req, res)
+      }
+    )
+  }
 }
 
-const miRouter=new PacienteRouter()
-export default miRouter.router
+export default new PacienteRouter().router
